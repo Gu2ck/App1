@@ -52,6 +52,8 @@ public class App1 {
                             System.out.println("Broadcast address: " + ifa.getBroadcast()); 
                             System.out.println("");
                             
+                            DecDotted b = new DecDotted(a.getHostAddress(), 23);
+                            System.out.println(b.asString());
                             DecDotted dd = new DecDotted(a.getHostAddress(), ifa.getNetworkPrefixLength());
                             System.out.println(dd.asString());
                             DecDotted d = new DecDotted(a.getHostAddress(), 25);

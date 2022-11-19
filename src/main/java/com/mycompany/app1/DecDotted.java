@@ -11,6 +11,7 @@ package com.mycompany.app1;
 public class DecDotted {
     public DecDotted(String myIp, int netBits)
     {
+        netBitNo = netBits;
         ipDec = new int[4];
         netDec = new int[4];
         invertedNetDec = new int[4];
@@ -70,7 +71,7 @@ public class DecDotted {
     public String asString()
     {
         String ret;
-        ret = "IP " + ipDec[0] + "." + ipDec[1] + "." + ipDec[2] + "." + ipDec[3] ;
+        ret = "IP " + ipDec[0] + "." + ipDec[1] + "." + ipDec[2] + "." + ipDec[3] + "/" + netBitNo;
         ret += ", NetBits " + binaryNetMask;
         ret += ", Net Mask " + netDec[0] + "." + netDec[1] + "." + netDec[2] + "." + netDec[3] ;
         ret += ", minIP " + minIP[0] + "." + minIP[1] + "." + minIP[2] + "." + minIP[3] ;
@@ -81,7 +82,11 @@ public class DecDotted {
     
     private int[] add(int[] ip, int n)
     {
-        int[] ret = ip;
+        int[] ret = new int[4];
+        for (int i=0; i<4; i++)
+        {
+            ret[i] = ip[i];
+        }
         int tmp = ip[3] + n;
         if (tmp > 255)
         {
@@ -96,6 +101,7 @@ public class DecDotted {
     }
     
     private int[] ipDec;
+    private int netBitNo;
     private String binaryNetMask;
     private int[] netDec;
     private int[] invertedNetDec;
